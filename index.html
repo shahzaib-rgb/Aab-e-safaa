@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XTREME FASHION | Be Bold. Be Xtreme.</title>
+<meta name="description" content="Premium streetwear by XTREME FASHION.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#080808;--accent:#d7ff00;--muted:#999}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:white;font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+.topbar{text-align:center;background:var(--accent);color:#080808;padding:10px;font-size:10px;font-weight:900;letter-spacing:2px}
+header{height:75px;padding:0 7%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#080808ed;backdrop-filter:blur(12px);border-bottom:1px solid #222;z-index:20}
+.logo{font-family:'Barlow Condensed';font-size:32px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:28px}
+nav a{font-size:11px;font-weight:800;letter-spacing:1px}
+nav a:hover{color:var(--accent)}
+.header-right{display:flex;gap:15px;align-items:center}
+.cart-btn{background:var(--accent);border:0;padding:12px 17px;font-size:11px;font-weight:900}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:25px}
+.hero{min-height:650px;padding:65px 8%;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:radial-gradient(ellipse at 75% 45%,#292929,#111 40%,#080808 75%);overflow:hidden}
+.eyebrow{font-size:10px;color:var(--accent);letter-spacing:4px;font-weight:900;margin-bottom:22px}
+.hero h1{font-family:'Barlow Condensed';font-size:clamp(75px,11vw,145px);line-height:.82;letter-spacing:-3px;font-weight:900}
+.hero h1 span{display:block;color:var(--accent)}
+.hero p{max-width:420px;color:#aaa;font-size:13px;line-height:1.9;margin:27px 0}
+.btn{display:inline-block;background:var(--accent);color:#080808;padding:16px 25px;font-size:10px;font-weight:900;letter-spacing:2px;transition:.3s}
+.btn:hover{background:white;transform:translateY(-3px)}
+.hero-art{height:440px;display:flex;align-items:center;justify-content:center;position:relative;perspective:900px}
+.orbit{position:absolute;width:350px;height:350px;border:1px solid #555;border-radius:50%;transform:rotateX(65deg)}
+.orbit:after{content:"";position:absolute;inset:35px;border:1px solid #444;border-radius:50%}
+.hoodie{width:260px;height:300px;background:linear-gradient(110deg,#444,#111 50%,#333);clip-path:polygon(22% 8%,38% 0,50% 10%,62% 0,78% 8%,100% 28%,85% 47%,76% 39%,82% 100%,18% 100%,24% 39%,15% 47%,0 28%);display:flex;justify-content:center;align-items:center;filter:drop-shadow(0 25px 30px #000);animation:float 5s ease-in-out infinite}
+.hoodie:after{content:"XTREME";font-family:'Barlow Condensed';font-size:33px;font-weight:900;letter-spacing:3px;color:var(--accent)}
+@keyframes float{0%,100%{transform:translateY(0) rotateY(-10deg)}50%{transform:translateY(-17px) rotateY(10deg)}}
+.hero-label{position:absolute;bottom:20px;right:0;color:#888;font-size:9px;letter-spacing:3px}
+.section{padding:85px 8%}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:32px}
+.kicker{font-size:10px;color:var(--accent);letter-spacing:4px;font-weight:900;margin-bottom:12px}
+h2{font-family:'Barlow Condensed';font-size:53px;font-weight:900}
+.section-head p{font-size:11px;color:#888}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:27px}
+.filter{background:#171717;border:1px solid #333;color:#aaa;padding:11px 18px;font-size:10px;font-weight:800}
+.filter.active,.filter:hover{background:var(--accent);color:#080808;border-color:var(--accent)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.product-card{background:#111;border:1px solid #222;transition:.3s}
+.product-card:hover{transform:translateY(-5px);border-color:#666}
+.product-img{height:275px;background:radial-gradient(circle,#303030,#101010 70%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-placeholder{font-family:'Barlow Condensed';font-size:85px;font-weight:900;color:#3b3b3b}
+.tag{position:absolute;top:12px;left:12px;background:var(--accent);color:#000;padding:6px 9px;font-size:9px;font-weight:900}
+.product-info{padding:16px}
+.product-info h3{font-size:12px;margin-bottom:8px}
+.product-info p{font-size:10px;color:#888;margin-bottom:12px}
+.price{font-size:14px;font-weight:900}
+.add{width:100%;padding:12px;margin-top:14px;background:transparent;color:white;border:1px solid #444;font-size:10px;font-weight:900}
+.add:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+.banner{margin:10px 8% 75px;padding:60px 7%;background:var(--accent);color:#080808;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.banner h2{font-size:65px;line-height:.9}
+.banner p{font-size:12px;margin-top:12px}
+.banner .btn{background:#080808;color:white}
+.about{background:#111;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-art{height:330px;background:linear-gradient(135deg,#292929,#090909);display:flex;justify-content:center;align-items:center;font-family:'Barlow Condensed';font-size:90px;font-weight:900;color:#444}
+.about-text p{font-size:13px;color:#999;line-height:2;margin-top:18px}
+footer{padding:50px 8% 25px;border-top:1px solid #222}
+.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer p{font-size:11px;color:#888;line-height:2;margin-top:13px}
+.footer-bottom{border-top:1px solid #222;margin-top:35px;padding-top:20px;display:flex;justify-content:space-between;color:#666;font-size:10px}
+.cart-panel{position:fixed;inset:0;background:#000b;z-index:50;display:none;justify-content:flex-end}
+.cart-panel.open{display:flex}
+.cart{background:#111;width:min(430px,100%);height:100%;padding:25px;overflow-y:auto}
+.cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.cart-head h2{font-size:35px}
+.close{background:none;color:white;border:0;font-size:28px}
+.cart-item{display:flex;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid #333;font-size:12px}
+.cart-item button{background:none;color:var(--accent);border:0;font-size:10px}
+.cart-total{display:flex;justify-content:space-between;margin:25px 0;font-weight:900}
+.checkout{width:100%;background:var(--accent);border:0;padding:17px;font-weight:900;letter-spacing:1px}
+.empty{text-align:center;padding:45px;color:#888;font-size:13px}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.hero{padding:60px 6%}.hoodie{width:210px;height:245px}.orbit{width:280px;height:280px}}
+@media(max-width:650px){
+header{height:65px;padding:0 5%}.logo{font-size:27px}
+nav{display:none;position:absolute;top:65px;left:0;width:100%;background:#111;padding:25px;flex-direction:column;gap:22px}
+nav.show{display:flex}.menu-btn{display:block}.cart-btn{padding:10px 12px}
+.hero{grid-template-columns:1fr;text-align:center;padding:65px 7% 30px}
+.hero h1{font-size:90px}.hero p{margin:25px auto}.hero-art{height:300px}
+.section{padding:65px 6%}h2{font-size:43px}
+.section-head{align-items:start;flex-direction:column;gap:12px}
+.product-img{height:205px}.product-placeholder{font-size:65px}
+.banner{margin:10px 6% 55px;padding:40px 25px;flex-direction:column;align-items:start}
+.banner h2{font-size:55px}.about{grid-template-columns:1fr}
+.about-art{height:220px;font-size:65px}
+.footer-bottom{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">WELCOME TO XTREME FASHION — BE BOLD. BE XTREME.</div>
+
+<header>
+<a href="#" class="logo">XTREME<span>.</span></a>
+<nav id="nav">
+<a href="#home">HOME</a>
+<a href="#shop">SHOP</a>
+<a href="#about">OUR STORY</a>
+<a href="#contact">CONTACT</a>
+</nav>
+<div class="header-right">
+<button class="cart-btn" onclick="openCart()">BAG (<span id="count">0</span>)</button>
+<button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('show')">☰</button>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div>
+<div class="eyebrow">THE NEW STREETWEAR ERA</div>
+<h1>BE BOLD.<span>BE XTREME.</span></h1>
+<p>Not made to fit in. Made to stand out. Discover the latest streetwear essentials designed for those who dare to be different.</p>
+<a href="#shop" class="btn">EXPLORE COLLECTION ↗</a>
+</div>
+<div class="hero-art">
+<div class="orbit"></div>
+<div class="hoodie"></div>
+<div class="hero-label">XTREME ORIGINAL COLLECTION / 2026</div>
+</div>
+</section>
+
+<section class="section" id="shop">
+<div class="section-head">
+<div><div class="kicker">CURATED FOR YOU</div><h2>THE COLLECTION</h2></div>
+<p>Designed to make a statement.</p>
+</div>
+<div class="filters">
+<button class="filter active" onclick="filterProducts('All',this)">ALL</button>
+<button class="filter" onclick="filterProducts('Hoodies',this)">HOODIES</button>
+<button class="filter" onclick="filterProducts('T-Shirts',this)">T-SHIRTS</button>
+<button class="filter" onclick="filterProducts('Pants',this)">PANTS</button>
+</div>
+<div class="products" id="products"></div>
+</section>
+
+<section class="banner">
+<div>
+<div class="kicker" style="color:#111">YOUR STYLE. YOUR RULES.</div>
+<h2>DON'T FOLLOW.<br>LEAD THE WAY.</h2>
+<p>Upgrade your wardrobe. Own your identity.</p>
+</div>
+<a href="#shop" class="btn">SHOP NOW ↗</a>
+</section>
+
+<section class="section about" id="about">
+<div class="about-art">X / F</div>
+<div class="about-text">
+<div class="kicker">WHO WE ARE</div>
+<h2>MORE THAN<br>JUST FASHION.</h2>
+<p>XTREME FASHION is built for individuals who believe style is an attitude. We bring modern streetwear, bold designs and everyday comfort together. Our mission is simple: help you express yourself without limits.</p>
+<p style="color:var(--accent);font-weight:900">BE BOLD. BE XTREME.</p>
+</div>
+</section>
+</main>
+
+<footer id="contact">
+<div class="footer-top">
+<div><a href="#" class="logo">XTREME<span>.</span></a><p>Be bold. Be different. Be Xtreme.<br>Premium streetwear for the fearless.</p></div>
+<div><div class="kicker">QUICK LINKS</div><p><a href="#home">Home</a><br><a href="#shop">Shop collection</a><br><a href="#about">Our story</a></p></div>
+<div><div class="kicker">GET IN TOUCH</div><p>Pakistan<br>WhatsApp: 0330 3764980<br>Instagram: @xtremefashion</p><a class="btn" style="margin-top:15px" href="https://wa.me/923303764980">CHAT WITH US</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 XTREME FASHION. ALL RIGHTS RESERVED.</span><span>BE BOLD. BE XTREME.</span></div>
+</footer>
+
+<div class="cart-panel" id="cartPanel" onclick="if(event.target===this)closeCart()">
+<div class="cart">
+<div class="cart-head"><h2>YOUR BAG</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="cartItems"></div>
+<div class="cart-total"><span>TOTAL</span><span id="total">Rs. 0</span></div>
+<button class="checkout" onclick="checkout()">ORDER ON WHATSAPP ↗</button>
+</div>
+</div>
+
+<script>
+const products=[
+{id:1,name:"Essential Oversized Hoodie",category:"Hoodies",price:4500,tag:"BESTSELLER",desc:"Premium oversized fit"},
+{id:2,name:"Xtreme Graphic Hoodie",category:"Hoodies",price:4990,tag:"NEW DROP",desc:"Statement streetwear"},
+{id:3,name:"Classic Black Hoodie",category:"Hoodies",price:4200,tag:"POPULAR",desc:"Everyday comfort"},
+{id:4,name:"Signature White Tee",category:"T-Shirts",price:1990,tag:"NEW",desc:"Minimal everyday style"},
+{id:5,name:"Oversized Graphic Tee",category:"T-Shirts",price:2490,tag:"TRENDING",desc:"Bold graphic design"},
+{id:6,name:"Essential Black Tee",category:"T-Shirts",price:1790,tag:"CLASSIC",desc:"Relaxed premium fit"},
+{id:7,name:"Urban Cargo Pants",category:"Pants",price:3990,tag:"NEW",desc:"Utility streetwear"},
+{id:8,name:"Relaxed Fit Joggers",category:"Pants",price:3290,tag:"POPULAR",desc:"All-day comfort"},
+{id:9,name:"Xtreme Signature Tee",category:"T-Shirts",price:2290,tag:"LIMITED",desc:"Xtreme signature print"},
+{id:10,name:"Premium Grey Hoodie",category:"Hoodies",price:4590,tag:"LIMITED",desc:"Premium winter essential"},
+{id:11,name:"Street Cargo Pants",category:"Pants",price:4290,tag:"TRENDING",desc:"Modern relaxed fit"},
+{id:12,name:"Essential Oversized Tee",category:"T-Shirts",price:2190,tag:"BESTSELLER",desc:"Premium cotton feel"}
+];
+
+let cart=[];
+
+function renderProducts(list=products){
+document.getElementById('products').innerHTML=list.map(p=>`
+<div class="product-card">
+<div class="product-img">
+<span class="tag">${p.tag}</span>
+<div class="product-placeholder">${p.category==="Hoodies"?"XF":p.category==="Pants"?"XP":"XT"}</div>
+</div>
+<div class="product-info">
+<h3>${p.name}</h3>
+<p>${p.desc}</p>
+<div class="price">Rs. ${p.price.toLocaleString('en-PK')}</div>
+<button class="add" onclick="addToCart(${p.id})">ADD TO BAG +</button>
+</div>
+</div>`).join('');
+}
+
+function filterProducts(category,btn){
+document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+renderProducts(category==='All'?products:products.filter(p=>p.category===category));
+}
+
+function addToCart(id){
+const p=products.find(x=>x.id===id);
+const old=cart.find(x=>x.id===id);
+if(old)old.qty++;
+else cart.push({...p,qty:1});
+updateCart();
+}
+
+function updateCart(){
+document.getElementById('count').textContent=cart.reduce((s,p)=>s+p.qty,0);
+document.getElementById('cartItems').innerHTML=cart.length?
+cart.map(p=>`
+<div class="cart-item">
+<div><strong>${p.name}</strong><p style="color:#aaa;margin-top:8px">Rs. ${p.price.toLocaleString('en-PK')} × ${p.qty}</p></div>
+<button onclick="removeItem(${p.id})">REMOVE</button>
+</div>`).join(''):
+'<div class="empty">Your bag is empty.</div>';
+
+document.getElementById('total').textContent='Rs. '+cart.reduce((s,p)=>s+p.price*p.qty,0).toLocaleString('en-PK');
+}
+
+function removeItem(id){
+cart=cart.filter(p=>p.id!==id);
+updateCart();
+}
+
+function openCart(){
+document.getElementById('cartPanel').classList.add('open');
+}
+
+function closeCart(){
+document.getElementById('cartPanel').classList.remove('open');
+}
+
+function checkout(){
+if(!cart.length){
+alert('Your bag is empty!');
+return;
+}
+const total=cart.reduce((s,p)=>s+p.price*p.qty,0);
+let message='Assalam o Alaikum! I want to order from XTREME FASHION:\n\n';
+cart.forEach(p=>{
+message+=p.name+' x '+p.qty+' = Rs. '+(p.price*p.qty)+'\n';
+});
+message+='\nTotal: Rs. '+total+'\n\nPlease confirm my order.';
+window.open('https://wa.me/923303764980?text='+encodeURIComponent(message),'_blank');
+}
+
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>
